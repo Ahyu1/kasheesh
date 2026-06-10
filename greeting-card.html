@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#kash hbd yehey</title>
+    <style>
+        :root {
+            --phone-bg: #000000;
+            --screen-bg: #f5f5f7;
+            --ios-blue: #007aff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #0f0f1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            background-color: var(--phone-bg);
+            border-radius: 50px;
+            padding: 13px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6),
+                        0 0 0 4px #333,
+                        0 0 0 8px #111;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .dynamic-island {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 30px;
+            background-color: #000;
+            border-radius: 20px;
+            z-index: 10;
+            transition: width 0.3s ease;
+        }
+
+        .dynamic-island:hover {
+            width: 200px;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--screen-bg);
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+
+            transition: transform 0.45s ease, opacity 0.45s ease;
+            transform-origin: center center;
+        }
+
+        .iphone-screen.opening-app {
+    transform: scale(1.15);
+    opacity: 0;}
+
+    /* App icon press effect */
+.apps a img {
+    width: 40px;
+    border-radius: 9px;
+    transition: transform 0.2s ease;
+}
+
+.apps a img:active {
+    transform: scale(0.85);
+}
+
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: transparent;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .status-bar a {
+    pointer-events: auto;
+}
+
+        .status-right {
+            display: flex;
+            gap: 5px;
+        }
+
+        .scrollable-content {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 15px 20px 80px 20px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .scrollable-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .app-header {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .app-header h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .app-header p {
+            margin: 5px 0 0 0;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(0.98);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+        }
+
+        .card-tag {
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--ios-blue);
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0 0 0px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            border-right: 2px solid #000;
+            animation: blinkCursor 0.7s infinite;
+        }
+
+        .card-description {
+            font-size: 11px;
+           
+        }
+
+        @keyframes blinkCursor {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        .card-body {
+            font-size: 14px;
+            color: #636366;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        .card-image {
+    width: 100%;
+    height: 180px;
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    background: #f2f2f7;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+        .home-indicator-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(transparent, var(--screen-bg) 50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .home-indicator {
+            width: 140px;
+            height: 5px;
+            background-color: #000000;
+            border-radius: 100px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .home-indicator-container:hover .home-indicator {
+            opacity: 0.4;
+        }
+
+        /*==============*/
+        .apps {
+            display: flex;
+            column-gap: 22px;
+        }
+        .apps a img {
+            width: 40px;
+            border-radius: 9px;
+        }
+
+        #po {width: 10px; pointer-events: auto;}
+    </style>
+</head>
+<body>
+
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+
+        <div class="iphone-screen">
+
+            <div class="status-bar">
+                <div class="status-left" id="clock">9:41</div>
+                <div class="status-right">
+                    <span>📶</span>
+                    <span>🔋</span>
+                    <a href="power-off.html" onclick="openApp(event, 'power-off.html')"><img id="po" src="power-off.png"></a>
+                </div>
+            </div>
+
+            <div class="scrollable-content" id="scrollContainer">
+
+                <div class="app-header">
+                    <p id="current-date">MONDAY, JUNE 15</p>
+                    <h1>For You</h1>
+                </div>
+
+                <div class="card" onclick="alert('HAPPY BIRTHDAY YOHOO')">
+                    <div class="card-image">
+                        <img src="kash-widget.jpg">
+                    </div>
+                    <div class="card-tag">D-DAY</div>
+                    <h3 class="card-title" id="typed-title"></h3>
+                    <hr>
+                    <p class="card-description">Kindly open the apps below. Start from messages, spotify, photos, then capcut</p>
+                </div>
+
+                <div class="apps">
+                     <a href="message.html" onclick="openApp(event, 'message.html')">
+                       <img src="apple.png">
+                     </a>
+
+                     <a href="photos.html" onclick="openApp(event, 'photos.html')">
+                       <img src="photos.png">
+                     </a>
+
+                     <a href="spotify.html" onclick="openApp(event, 'spotify.html')">
+                       <img src="spotify.png">
+                     </a>
+
+                    <a href="capcut.html" onclick="openApp(event, 'capcut.html')">
+                       <img src="CapCut Apks.jpg">
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="home-indicator-container" onclick="scrollToTop()" title="Click to go Home">
+                <div class="home-indicator"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Real-time Clock Update
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            const timeString = `${hours}:${minutes}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Dynamic Date
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        const today = new Date();
+        document.getElementById('current-date').textContent =
+            today.toLocaleDateString("en-US", options).toUpperCase();
+
+        // Home Indicator
+        function scrollToTop() {
+            document.getElementById('scrollContainer').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Typewriter Animation (Runs Once)
+        function typeText(elementId, text, speed = 120) {
+            const element = document.getElementById(elementId);
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    element.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(type, speed);
+                } else {
+                    // Remove cursor after typing finishes
+                    element.style.animation = 'none';
+                    element.style.borderRight = 'none';
+                }
+            }
+
+            type();
+        }
+
+        // Start typing effect
+        typeText('typed-title', "Kasish's Birthday!! 🎉", 120);
+
+        function openApp(event, page) {
+    event.preventDefault();
+
+    const screen = document.querySelector('.iphone-screen');
+
+    screen.classList.add('opening-app');
+
+    setTimeout(() => {
+        window.location.href = page;
+    }, 450);
+}
+    </script>
+
+</body>
+</html>

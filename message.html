@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#kash hbd yehey</title>
+    <style>
+        :root {
+            --phone-bg: #000000;
+            --screen-bg: #0076f5;
+            --ios-blue: #007aff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #0f0f1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+
+        /* iPhone Frame Container */
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            background-color: var(--phone-bg);
+            border-radius: 50px;
+            padding: 13px;
+
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 
+                        0 0 0 4px #333, 
+                        0 0 0 8px #111;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* Dynamic Island / Notch */
+        .dynamic-island {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 30px;
+            background-color: #000;
+            border-radius: 20px;
+            z-index: 10;
+            transition: width 0.3s ease;
+        }
+
+        .dynamic-island:hover {
+            width: 200px;
+        }
+
+        /* Screen Area */
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--screen-bg);
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: transparent;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Scrollable Content Container */
+        .scrollable-content {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 15px 20px 80px 20px; /* Extra bottom padding for the home indicator */
+            scroll-behavior: smooth;
+            /* Hide default scrollbar for sleek iOS look */
+            scrollbar-width: none; 
+        }
+
+        .scrollable-content::-webkit-scrollbar {
+            display: none; 
+        }
+
+        /* App Header */
+        .app-header {
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .app-header h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .app-header p {
+            margin: 5px 0 0 0;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+
+        
+        /* Home Indicator Bar (Swipe up bar) */
+        .home-indicator-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(transparent, var(--screen-bg) 50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .home-indicator {
+            width: 140px;
+            height: 5px;
+            background-color: #000000;
+            border-radius: 100px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .home-indicator-container:hover .home-indicator {
+            opacity: 0.4;
+        }
+
+        /*=======================*/
+        .container {
+            padding: 10px 10px;
+            border-radius: 8px;
+            border: 3px solid black;
+            background-color: rgb(255, 255, 255);
+    
+        }
+        .container img {
+            width: 10rem;
+            margin-left: 20px;
+        }
+
+        .container h3 {
+            font-style: italic;
+        }
+
+        .container p {
+            text-align: left;
+            font-family: Arial;
+            font-size: 12px;
+        }
+
+        .container .from {
+            text-align: end;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-style: italic;
+        }
+
+        
+
+        /*===========*/
+        .iphone-screen {
+    animation: appOpen 0.45s ease;
+}
+
+@keyframes appOpen {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#kash {color: rgb(0, 0, 0)}
+
+
+.misij {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: whitesmoke;
+    border-radius: 7px;
+}
+
+#ul {text-decoration: underline}
+.from{text-align: end;}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+
+        <div class="iphone-screen">
+            
+            <div class="status-bar">
+                <div class="status-left" id="clock">9:41</div>
+                <div class="status-right">
+                    <span>📶</span>
+                    <span>🔋</span>
+                </div>
+            </div>
+
+            <div class="scrollable-content" id="scrollContainer">
+                
+                <div class="app-header">
+                    <a href="greeting-card.html"><img src="left.png"></a>
+                </div>
+                <div class="container">
+                    <h3>TO: <span id="kash">KASH</span></h3>
+                    <img src="kash-card.jpg">
+                    <div class="misij">
+                        <p>
+                            hi kashh happy birthday!! 19 and still a minor. last year of adolescence mo na pero bata ka pa rin whahahaha. <b>"minor"</b>, 
+                            if i remember correctly.. that was the first ragebait we kept throwing at each other aside from
+                            middle-fingering during our early weeks nung first sem. bakit ba kasi minor?? hahahaha. but behind all those teasings,
+                            we didn't realize that was where it all started—our closeness. siguro kung hindi mo 'ko inaasar noon
+                            (kung hindi ka lang masama at bully), hindi tayo close ngayon. hindi kita magagantihan at maaasar pabalik.. if you had just shut your mouth.
+                            and if none of that had happened, this friendship wouldn't have happened either. that's why i'll always be grateful for those small moments
+                            because they turned into something much bigger. you've became a friend. 
+                        </p>
+                        <br>
+
+                        <p>but i could say you're not just a great friend but a great person. i hope you know that. and knowing you, i know u would love this because you're very appreciative. ganyan kita nakilala. so in this day, i wanna show appreciation too and say thank you for everything- like everything, kasi you probably don't realize how much you’ve affected people in a good way, at sa akin. you've always hyped me up, supported me, and telling me that you were proud kahit wala naman akong ginagawa. and sometimes i just wonder why you see things in me that even i, myself, couldn't see. but i've come to realize that's just you, who sees the good in others.
+                        </p>
+<br>
+                        <p>someone once told me that everyone has their own potential even themselves did not know exist until they meet certain people who helps them unlock it.
+                            and you.. you are one of those people who had that key and unlocked something in me—i became more open. i never thought i could share or open up things to others but
+                            then i found myself there on ig, randomly yapping about my life's "what could've beens" to you. honestly, i wasn't really looking for someone to fully understand me,
+                            someone who listens was enough just to make me feel heard. pero ikaw hindi ka lang nakinig, you understood every part of me, then eventually in one moment,
+                            i learned you were a safe space. </p>
+<br>
+                        <p>i guess that was one of your potential— unlocking someone else's. maybe that's why you're an element for others, at masasabi ko na you're
+                             really a <i>sun</i>, shedding light into the life of others just by being there. i mean, you kinda have this warm presence that everyone somehow feels safe beneath your rays.
+                             kaya i won't take all the credit for being able to take these small steps because you were one of the people who made me feel safe enough to do so. yan 'yung narealize ko. </p>
+                            <br>
+                        <p>and one last thing, i may not know you that much (yet), but i'm sure you have so much more than any of these surfaces we've seen so far. and
+                        even if you've gone quiet and stopped lifting others up, or being the sunshine you used to be, that doesn't change anything. <span id="ul">you're still a great person.</span>
+                        you'll always have that light! and no one can take that away from you. so yeaa, all i wish is for you to have a happy and peaceful life.. na you may continue to meet people who appreciate you the way
+                            you deserve. and please, no birthday blues today. this day is yours, sana happy kaa 💙 </p>
+<br>
+                        <p>again, happy birthday kash! </p>
+                            
+                            
+
+
+    
+                        <p class="from">xo, xyrelle</p>
+
+                    </div>
+                    
+
+                </div>
+                
+       </div>
+                
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Real-time Clock Update
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            
+            // Format minutes to always display two digits
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            
+            const timeString = `${hours}:${minutes}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+        
+        // Update clock immediately, then set interval
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Dynamically set real-time date string in header
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString("en-US", options).toUpperCase();
+
+        // Functional Home Indicator: Scrolls back up
+        function scrollToTop() {
+            document.getElementById('scrollContainer').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
+

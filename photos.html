@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>#kash hbd yehey</title>
+    <style>
+        :root {
+            --phone-bg: #000000;
+            --screen-bg: #ffe100;
+            --ios-blue: #007aff;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #0f0f1a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+
+        /* iPhone Frame Container */
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            background-color: var(--phone-bg);
+            border-radius: 50px;
+            padding: 13px;
+
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6), 
+                        0 0 0 4px #333, 
+                        0 0 0 8px #111;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        /* Dynamic Island / Notch */
+        .dynamic-island {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 30px;
+            background-color: #000;
+            border-radius: 20px;
+            z-index: 10;
+            transition: width 0.3s ease;
+        }
+
+        .dynamic-island:hover {
+            width: 200px;
+        }
+
+        /* Screen Area */
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background-color: var(--screen-bg);
+            border-radius: 38px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            font-size: 14px;
+            font-weight: 600;
+            background-color: transparent;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Scrollable Content Container */
+        .scrollable-content {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 15px 20px 80px 20px; /* Extra bottom padding for the home indicator */
+            scroll-behavior: smooth;
+            /* Hide default scrollbar for sleek iOS look */
+            scrollbar-width: none; 
+        }
+
+        .scrollable-content::-webkit-scrollbar {
+            display: none; 
+        }
+
+        /* App Header */
+        .app-header {
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .app-header h1 {
+            font-size: 32px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .app-header p {
+            margin: 5px 0 0 0;
+            color: #8e8e93;
+            font-size: 14px;
+        }
+
+        
+        /* Home Indicator Bar (Swipe up bar) */
+        .home-indicator-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 34px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(transparent, var(--screen-bg) 50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .home-indicator {
+            width: 140px;
+            height: 5px;
+            background-color: #000000;
+            border-radius: 100px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .home-indicator-container:hover .home-indicator {
+            opacity: 0.4;
+        }
+
+        /*=======================*/
+        .container {
+            padding: 10px 10px;
+            border-radius: 8px;
+            border: 3px solid black;
+            background-color: rgb(255, 255, 255);
+            justify-content: center;
+        }
+
+        .container h3 {
+            font-style: italic;
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 800;
+        }
+
+        .container p {
+            font-size: 11px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: italic;
+        }
+
+        .photos {
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+            justify-content: center;
+        }
+        .photos img {
+            width: 11rem;
+            border-radius: 8px;
+        }
+
+
+        /*===========*/
+        .iphone-screen {
+    animation: appOpen 0.45s ease;
+}
+
+@keyframes appOpen {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+#kash {color: rgb(240, 201, 30)}
+.photos p {margin-left:5px}
+
+.wrapper {
+  padding: 10px 10px;
+  border-radius: 8px;
+  background-color: whitesmoke;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*border: 2px solid rgb(255, 44, 248);*/
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 4px 8px rgba(0, 0, 0, 0.05),
+    0 8px 16px rgba(0, 0, 0, 0.05),
+    0 16px 32px rgba(0, 0, 0, 0.05);
+}
+
+hr {
+    border: solid 2px #ffe100;
+    width: 90%
+}
+
+.hr1 {
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+
+#musicBtn {
+    background-color: #ffe100;
+    padding:0;
+    border: none;
+    width: 25px;
+    margin-right: 7px;
+}
+    </style>
+</head>
+<body>
+
+    <div class="iphone-frame">
+        <div class="dynamic-island"></div>
+
+        <div class="iphone-screen">
+            
+            <div class="status-bar">
+                <div class="status-left" id="clock">9:41</div>
+                <div class="status-right">
+                    <span>📶</span>
+                    <span>🔋</span>
+                </div>
+            </div>
+
+            <div class="scrollable-content" id="scrollContainer">
+                
+                <div class="app-header">
+                    <a href="greeting-card.html"><img src="left.png"></a>
+                </div>
+                <div class="container">
+                    <h3>OUR CAPTURED MEMORIES THROUGHOUT OUR 1ST YEAR 📸</h3>
+                    <p><b>good old days</b> to <b>this day </b>:></p>
+                    <hr class="hr1">
+                    <div class="photos">
+                        <!--<img src="3.jpg">-->
+                        <div class="wrapper">
+                           <img src="17.jpg">
+                           <p>our first pic during pathfit ☺️ ang cute ko pa dito</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="5.jpg">
+                           <p>ang cute ko ulet</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="8.jpg">
+                           <p>at ang cute ko nanaman!!</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="6.jpg">
+                           <p>PEAK(ang cute ko)</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="4.jpg">
+                           <p>sige na. kayo muna cute dito tutal naka pakyu nmn aq</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="1.jpg">
+                           <p>SYEMPRE AKO ULITT. napakacute ko huhu. nang gigigil ako sa sarili kong mukha 😣</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="9.jpg">
+                           <p>this is what i meant by "<b>if you were a song</b>, you'd be <u>daylight</u>"...the sunlight just hits you perfectly, beautifully in this photo, kash!!</p>
+                        </div>
+                        <hr>
+                        <!-- not included
+                        <div class="wrapper">
+                           <img src="2.jpg">
+                           <p>this was when u studied at the e-lib for prelims exam. hindi ka naman nag-aral, binasa mo lang yung ppts at nag-highlights ka lang.
+                            hindi mo kami maloloko 'no.
+                           </p>
+                        </div>
+                        <hr>
+                        -->
+                        <div class="wrapper">
+                           <img src="10.jpg">
+                           <p>so going backk.. tanginang mukha yan, xyrelle. sobrang cute</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="12.jpg">
+                           <p>😁😗</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="13.jpg">
+                           <p>fun run pero imbes na maging <b>fun</b>, napaltan lang ng inis. nakakapagod pero buti nalang ang cute ko. that's all that matters.</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="14.jpg">
+                           <p>ngl pretty ka here 😁 at ako? tamang amount of cuteness lang</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="16.jpg">
+                           <p> 😊 blue 😗 babies 😊</p>
+                        </div>
+                        <hr>
+                        <div class="wrapper">
+                           <img src="15.jpg">
+                           <p>ohh siyaa since last na ito.. ang cute natin parehas! 😀🎉</p>
+                        </div>
+                        <!--<img src="18.jpg">-->
+
+                    </div>
+                    <br>
+                    <hr class="hr1">
+                    <P>dinisplay ko nalang talaga dito para madelete ko na sa phone ko. full storage na 'ko eh</P>
+                    <p></p>
+                </div>
+    
+       </div>
+                
+
+            </div>
+
+
+        </div>
+    </div>
+
+    <script>
+        // Real-time Clock Update
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            
+            // Format minutes to always display two digits
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            
+            const timeString = `${hours}:${minutes}`;
+            document.getElementById('clock').textContent = timeString;
+        }
+        
+        // Update clock immediately, then set interval
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Dynamically set real-time date string in header
+        const options = { weekday: 'long', month: 'long', day: 'numeric' };
+        const today  = new Date();
+        document.getElementById('current-date').textContent = today.toLocaleDateString("en-US", options).toUpperCase();
+
+        // Functional Home Indicator: Scrolls back up
+        function scrollToTop() {
+            document.getElementById('scrollContainer').scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        const music = document.getElementById("bgMusic");
+        const button = document.getElementById("musicBtn");
+
+        button.addEventListener("click", async () => {
+    try {
+        if (music.paused) {
+            await music.play();
+            button.textContent = "🔇";
+        } else {
+            music.pause();
+            music.currentTime = 0;
+            button.textContent = "🔊";
+        }
+    } catch (err) {
+        console.error("Audio error:", err);
+    }
+        });
+    </script>
+</body>
+</html>
